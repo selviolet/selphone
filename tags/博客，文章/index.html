@@ -20,9 +20,19 @@
   
     <meta name="description" content="Selphopne's personal blog">
   
-  <title>Tag: 博客，文章 [ 晓风知 ]</title>
+  <title>标签: 博客，文章 [ 晓风知 ]</title>
   
   
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+  <link rel="stylesheet" href="/css/random.css">
+<link rel="stylesheet" href="/css/vegas.min.css">
+<link rel="stylesheet" href="/css/highlight-railscasts.css">
+<link rel="stylesheet" href="/css/jquery.fancybox.css">
+<link rel="stylesheet" href="/css/iconfont/iconfont.css">
+<link rel="stylesheet" href="/css/jquery.fancybox-thumbs.css">
+<link rel="stylesheet" href="/css/plyr.css">
   
 </head>
 
@@ -38,13 +48,48 @@
       <div id="brand">
         
         <a onClick="openUserCard()">
-          <img id="avatar" src=""/>
+          <img id="avatar" src="http://oa9gzg8ii.bkt.clouddn.com/%E6%B2%89.jpg"/>
           <div id="homelink">晓风知</div>
         </a>
       </div>
       <div id="menu-list">
         <ul>
         
+        
+          
+            <li>
+          
+            <a href="/index.html">主页</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/archives">档案</a>
+            
+          </li>
+        
+          
+            <li class="active">
+          
+            <a href="/tags">标签</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/categories">分类</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/about">关于</a>
+            
+          </li>
         
         </ul>
       </div>
@@ -63,6 +108,10 @@
     
       
       
+      
+    
+      
+      
         
           
         
@@ -78,7 +127,7 @@
   <p class="page-title-sub">
     <span id = "post-title-date">7-13</span>
     
-    <span id = "post-title-categories">Category
+    <span id = "post-title-categories">分类
     
     
       
@@ -89,7 +138,7 @@
     
     
     <span id = "post-title-tags">
-    Tag
+    标签
     
     
       
@@ -106,10 +155,6 @@
   </p>
   
 </div>
-      
-    
-      
-      
       
     
   </div>
@@ -138,37 +183,120 @@
 
 <div id="user-card">
   <div class="center-field">
-    <img class="avatar" src="">
+    <img class="avatar" src="http://oa9gzg8ii.bkt.clouddn.com/%E6%B2%89.jpg">
     <p id="description">Selphopne's personal blog</p>
     <ul class="social-icon">
   
+  
+    <li>
+      <a href="https://github.com/stiekel/hexo-theme-random">
+        
+          <i class="icon iconfont github">&#xe606;</i>
+        
+      </a>
+    </li>
+  
+    <li>
+      <a href="https://coding.net/u/Stiekel">
+        
+          <i class="icon iconfont coding">&#xe607;</i>
+        
+      </a>
+    </li>
+  
+    <li>
+      <a href="https://twitter.com/SidCN">
+        
+          <i class="icon iconfont twitter">&#xe600;</i>
+        
+      </a>
+    </li>
+  
+    <li>
+      <a href="http://weibo.com/sidcn">
+        
+          <i class="icon iconfont weibo">&#xe602;</i>
+        
+      </a>
+    </li>
+  
+    <li>
+      <a href="http://www.douban.com/people/Stiekel/">
+        
+          <i class="icon iconfont douban">&#xe609;</i>
+        
+      </a>
+    </li>
   
 </ul>
   </div>
 </div>
 
 
+<div id="btn-view">Hide</div>
+
 <script>
 // is trigger analytics / tongji script
 var isIgnoreHost = false;
 
 if(window && window.location && window.location.host) {
-  isIgnoreHost = "".some(function(address){
+  isIgnoreHost = ["localhost","127.0.0.1"].some(function(address){
     return 0 === window.location.host.indexOf(address);
   });
 }
 
-var isTriggerAnalytics = !( "" && isIgnoreHost );
+var isTriggerAnalytics = !( true && isIgnoreHost );
 
 </script>
 
 
 
 
+  
+  
+    <script src="/js/jquery-2.2.3.min.js"></script>
+  
+    <script src="/js/vegas.min.js"></script>
+  
+    <script src="/js/random.js"></script>
+  
+    <script src="/js/highlight.pack.js"></script>
+  
+    <script src="/js/jquery.mousewheel.pack.js"></script>
+  
+    <script src="/js/jquery.fancybox.pack.js"></script>
+  
+    <script src="/js/jquery.fancybox-thumbs.js"></script>
+  
+    <script src="/js/plyr.js"></script>
+  
+
 <script>
 
-var vegasConfig = "";
-var unsplashConfig = "";
+  // fancybox
+  var backgroundImages = [];
+  
+    
+      backgroundImages.push('http://oa9gzg8ii.bkt.clouddn.com/%E6%B1%9F%E6%9E%AB%E6%B8%94%E7%81%AB.jpg?imageView2/1/w/__width__/h/__height__');
+    
+      backgroundImages.push('http://oa9gzg8ii.bkt.clouddn.com/%E5%88%9D%E9%9F%B3.png?imageView2/1/w/__width__/h/__height__');
+    
+  
+  $('#post').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox') || $(this).parent().hasClass('fancybox-thumb')) return;
+      var alt = this.alt || this.title;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'post' + i);
+    });
+  });
+  $(".fancybox").fancybox();
+
+var vegasConfig = {"preload­Image":true,"transition":["slideLeft2","slideRight2","flash2"],"timer":true,"delay":10000,"shuffle":true,"count":28};
+var unsplashConfig = {"gravity":"north"};
 
 $(".fancybox-thumb").fancybox({
   prevEffect: 'none',
